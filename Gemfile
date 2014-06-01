@@ -38,8 +38,6 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'state'
-
 gem 'state_machine'
 
 # Use ActiveModel has_secure_password
