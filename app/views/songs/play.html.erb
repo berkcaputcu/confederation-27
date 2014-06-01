@@ -1,5 +1,38 @@
 <% if @current.nil? %>
   No queued songs
 <% else %>
-  <iframe width="560" height="315" src="//www.youtube.com/embed/<%= @current.youtube_id %>?autoplay=1" frameborder="0" allowfullscreen></iframe>
+  <div id="player"></div>
 <% end %>
+
+
+<script src="http://www.youtube.com/player_api"></script>
+
+<script>
+
+    // create youtube player
+    var player;
+    function onYouTubePlayerAPIReady() {
+        player = new YT.Player('player', {
+          height: '390',
+          width: '640',
+          videoId: '<%= @current.try(:youtube_id) %>',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+    }
+
+    // autoplay video
+    function onPlayerReady(event) {
+      event.target.playVideo();
+    }
+
+    // when video ends
+    function onPlayerStateChange(event) {
+        if(event.data === 0) {
+          location.reload();
+        }
+    }
+
+</script>
