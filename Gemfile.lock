@@ -126,7 +126,6 @@ DEPENDENCIES
   rails_12factor
   sass-rails (~> 4.0.0)
   sdoc
-  sqlite3
   state
   state_machine
   turbolinks
