@@ -10,10 +10,11 @@
   %h2 Founded results:
   -@videos.each do |v|
     %div
-      %div= link_to v["title"], videos_add_to_queue_path(:id =>v["id"])
+      %div
+        %h2= link_to v["title"], videos_add_to_queue_path(:id =>v["id"])
       %iframe{:allowscriptaccess => "always", :allowFullScreen => "true", |
-      :frameborder => "0", :height => "430", :src => "//www.youtube.com/embed/#{v["id"]}", |
-      :title => "YouTube video player", :width => "640"}
+      :frameborder => "0", :height => "215", :src => "//www.youtube.com/embed/#{v["id"]}", |
+      :title => "YouTube video player", :width => "320"}
 
 
 =@countries
