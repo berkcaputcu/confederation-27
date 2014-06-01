@@ -2,19 +2,6 @@
   %div
     = label_tag "search for:"
     = text_field_tag "query"
-  %div
-    = label_tag "order by date"
-    = radio_button_tag 'order', 'date'
-    = label_tag "order by rating"
-    = radio_button_tag 'order', 'rating'
-    = label_tag "order by relevance"
-    = radio_button_tag 'order', 'relevance'
-    = label_tag "order by title"
-    = radio_button_tag 'order', 'title'
-    = label_tag "order by videocount"
-    = radio_button_tag 'order', 'videocount'
-    = label_tag "order by viewcount"
-    = radio_button_tag 'order', 'viewcount'
 
   %div
     = submit_tag "Submit"
@@ -27,3 +14,6 @@
       %iframe{:allowscriptaccess => "always", :allowFullScreen => "true", |
       :frameborder => "0", :height => "430", :src => "//www.youtube.com/embed/#{v["id"]}", |
       :title => "YouTube video player", :width => "640"}
+
+
+=@countries

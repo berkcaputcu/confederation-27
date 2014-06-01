@@ -5,9 +5,8 @@ class VideosController < ApplicationController
   end
 
   def index
-    @countries = client.countries
     if request.post?
-      client.search(params)
+      client.search(params.merge(:category => "music"))
       @videos = client.videos
     end
   end
