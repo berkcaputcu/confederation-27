@@ -11,12 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140601181203) do
+ActiveRecord::Schema.define(version: 20140601191016) do
 
   create_table "songs", force: true do |t|
     t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "youtube_id"
+    t.string   "state"
   end
 
 end

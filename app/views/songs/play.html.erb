@@ -1,0 +1,5 @@
+<% if @current.nil? %>
+  No queued songs
+<% else %>
+  <iframe width="560" height="315" src="//www.youtube.com/embed/<%= @current.youtube_id %>?autoplay=1" frameborder="0" allowfullscreen></iframe>
+<% end %>

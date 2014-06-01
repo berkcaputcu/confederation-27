@@ -39,6 +39,10 @@ group :doc do
 end
 
 gem 'state_machine'
+gem 'google-api-client'
+gem 'trollop'
+gem 'yourub', '~> 1.0.5'
+gem 'haml'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -1,13 +1,20 @@
 Confederation27::Application.routes.draw do
   resources :songs do
-    get 'search', on: :collection
+    get 'play', on: :collection
   end
+
+  get 'play' => 'songs#play'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'songs#index'
+  root 'videos#index'
+
+  get 'videos/index'
+  post 'videos/index'
+  get 'videos/add_to_queue'
+  get 'videos/:id' => 'videos#details', as: :details
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -21,8 +21,9 @@ class SongsController < ApplicationController
   def edit
   end
 
-  def search
-
+  def play
+    @current = Song.all.select(&:queued?).first
+    @current.play unless @current.nil?
   end
 
   # POST /songs
