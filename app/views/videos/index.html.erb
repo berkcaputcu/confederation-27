@@ -1,0 +1,22 @@
+<div class="row" style="margin: 0 auto;">
+  <div class="span-12">
+    <h2>27 Confederation</h2>
+    <%= form_tag videos_index_path, :method => :post, :class => "form-search" do %>
+      <%= text_field_tag "query", "", :class => "input-medium search-query" %>
+      <%= submit_tag "Search", :class => "btn" %>
+    <% end %>
+    <% if @videos %>
+      <% @videos.each do |v| %>
+        <div>
+          <div>
+            <h2>
+              <%= link_to v["title"], videos_add_to_queue_path(:id =>v["id"]) %>
+              <%= link_to "Add", videos_add_to_queue_path(:id =>v["id"]), :class => "btn" %>
+            </h2>
+          </div>
+          <iframe allowFullScreen="true" allowscriptaccess="always" frameborder="0" height="215" src="//www.youtube.com/embed/#{v["id"]}" title="YouTube video player" width="320"></iframe>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
