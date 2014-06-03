@@ -7,21 +7,19 @@
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, intial-scale=1">
   </head>
-    <body>
-
-      <div class="navbar">
-        <div class="navbar-inner">
-          <%= link_to("27 Confederation", root_path, :class => "brand") %>
-          <ul class="nav">
-            <li class="divider-vertical"></li>
-            <li><%= link_to("Play", play_songs_path) %></li>
-            <li><%= link_to("Search", root_path) %></li>
-          </ul>
-        </div>
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <%= link_to("27 Confederation", root_path, :class => "brand") %>
+        <ul class="nav">
+          <li class="divider-vertical"></li>
+          <li><%= link_to("Play", play_songs_path) %></li>
+          <li><%= link_to("Search", root_path) %></li>
+        </ul>
       </div>
-      <div class="container">
-        <%= yield %>
-      </div>
-
+    </div>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

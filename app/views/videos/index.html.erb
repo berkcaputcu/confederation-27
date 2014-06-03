@@ -1,5 +1,5 @@
-<div class="row">
-  <div class="span-12">
+<div class="row-fluid">
+  <div class="span3">
     <% unless @queued.empty? %>
       <h4><%= pluralize(@queued.count, "song") %> in the queue. <%= link_to_function("Show?", "$('#queue-section').toggle()") %> <%= link_to("Play?", play_songs_path) %></h4>
       <div id="queue-section" style="display:none;">
