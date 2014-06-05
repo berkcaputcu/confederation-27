@@ -12,7 +12,6 @@ Confederation27::Application.routes.draw do
   root 'videos#index'
 
   get 'videos/index'
-  post 'videos/index'
   get 'videos/add_to_queue'
   get 'videos/:id' => 'videos#details', as: :details
 

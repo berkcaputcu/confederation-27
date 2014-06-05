@@ -6,7 +6,7 @@ class VideosController < ApplicationController
 
   def index
     @queued = Song.all.select(&:queued?)
-    if request.post?
+    if params[:query]
       client.search(params.merge(:category => "music"))
       @videos = client.videos
     end

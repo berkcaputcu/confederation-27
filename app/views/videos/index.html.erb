@@ -1,7 +1,7 @@
 <div class="row-fluid">
   <div class="span3">
     <% unless @queued.empty? %>
-      <h4><%= pluralize(@queued.count, "song") %> in the queue. <%= link_to_function("Show?", "$('#queue-section').toggle()") %> <%= link_to("Play?", play_songs_path) %></h4>
+      <strong><%= pluralize(@queued.count, "song") %> in the queue. <%= link_to_function("Show?", "$('#queue-section').toggle()") %> | <%= link_to("Play?", play_songs_path) %></strong>
       <div id="queue-section" style="display:none;">
         <ol>
           <% @queued.each do |song| %>
@@ -11,7 +11,7 @@
       </div>
     <% end %>
     <label for="query"><h3>Search on YouTube</h3></label>
-    <%= form_tag videos_index_path, :method => :post, :class => "form-search" do %>
+    <%= form_tag videos_index_path, :method => :get, :class => "form-search" do %>
       <%= text_field_tag "query", "", :class => "input-medium search-query", :autofocus => "autofocus" %>
       <%= submit_tag "Search", :class => "btn" %>
     <% end %>
