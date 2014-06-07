@@ -3,15 +3,15 @@
     <table class="table">
       <thead>
         <tr>
-          <th>Title</th>
-          <th>Add</th>
+          <th></th>
+          <th>Song Title</th>
         </tr>
       </thead>
       <tbody>
         <% @songs.each do |song| %>
           <tr>
-            <td><%= song.title %></td>
-            <td><%= link_to "Requeue", songs_path(:song => {:youtube_id => song.youtube_id}), :method => :post %></td>
+            <td><%= link_to "<i class='icon-plus'></i>".html_safe, songs_path(:song => {:youtube_id => song.youtube_id}), :method => :post, :class => "btn" %></td>
+            <td><span title="<%= song.times_played %> times played"><%= song.title %></span></td>
           </tr>
         <% end %>
       </tbody>
