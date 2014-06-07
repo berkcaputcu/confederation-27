@@ -1,6 +1,10 @@
 class SongsController < ApplicationController
   before_action :set_song, only: [:destroy]
 
+  def index
+    @songs = Song.order('times_played DESC').first(5)
+  end
+
   def search
     @queued = Song.all.select(&:queued?)
     if params[:query]
