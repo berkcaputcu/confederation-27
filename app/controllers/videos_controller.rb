@@ -12,11 +12,6 @@ class VideosController < ApplicationController
     end
   end
 
-  def details
-    client.extended_info = true
-    @video = client.search(id: params[:id])
-  end
-
   def add_to_queue
     Song.create(youtube_id: params[:youtube_id], title: params[:title])
     redirect_to videos_index_path
