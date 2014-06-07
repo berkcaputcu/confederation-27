@@ -13,6 +13,12 @@ class SongsController < ApplicationController
     end
   end
 
+  def next
+    Pusher.url = "http://#{ENV['PUSHER_KEY']}:#{ENV['PUSHER_SECRET']}@api.pusherapp.com/apps/#{ENV['PUSHER_ID']}"
+    Pusher['songs'].trigger('next', {})
+    redirect_to search_songs_path
+  end
+
   def create
     @song = Song.create_with(title: song_params["title"]).find_or_create_by(youtube_id: song_params["youtube_id"])
     @song.reset

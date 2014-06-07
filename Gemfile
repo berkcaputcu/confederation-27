@@ -12,6 +12,7 @@ gem 'haml'
 gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
+gem 'pusher'
 
 group :production do
   gem 'pg'

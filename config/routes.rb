@@ -3,6 +3,7 @@ Confederation27::Application.routes.draw do
     collection do
       get 'play'
       get 'search'
+      get 'next'
     end
   end
 
