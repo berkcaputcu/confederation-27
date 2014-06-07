@@ -11,7 +11,7 @@
       </div>
     <% end %>
     <label for="query"><h3>Search on YouTube</h3></label>
-    <%= form_tag videos_index_path, :method => :get, :class => "form-search" do %>
+    <%= form_tag search_songs_path, :method => :get, :class => "form-search" do %>
       <%= text_field_tag "query", "", :class => "input-medium search-query", :autofocus => "autofocus" %>
       <%= submit_tag "Search", :class => "btn" %>
     <% end %>
@@ -19,10 +19,12 @@
       <% @videos.each do |v| %>
         <div>
           <div>
-            <strong>
-              <%= link_to v["title"], videos_add_to_queue_path(:youtube_id =>v["id"], :title => v["title"]) %>
-            </strong>
-              <%= link_to "Add", videos_add_to_queue_path(:youtube_id =>v["id"], :title => v["title"]), :class => "btn" %>
+            <%= form_for Song.new, url: songs_path do |f| %>
+              <%= f.hidden_field :youtube_id, value: v["id"] %>
+              <%= f.hidden_field :title, value: v["title"] %>
+                <%= f.submit v["title"], :class => "btn btn-link btn-large" %>
+                <%= f.submit "Add", :class => "btn" %>
+            <% end %>
           </div>
           <iframe allowFullScreen="true" allowscriptaccess="always" frameborder="0" height="215" src="//www.youtube.com/embed/#{v["id"]}" title="YouTube video player" width="320"></iframe>
         </div>
