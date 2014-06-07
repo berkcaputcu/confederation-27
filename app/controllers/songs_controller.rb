@@ -14,7 +14,8 @@ class SongsController < ApplicationController
   end
 
   def create
-    Song.create(song_params)
+    @song = Song.create_with(title: song_params["title"]).find_or_create_by(youtube_id: song_params["youtube_id"])
+    @song.reset
     redirect_to search_songs_path
   end
 

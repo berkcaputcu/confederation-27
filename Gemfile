@@ -20,6 +20,7 @@ end
 
 group :development do
   gem 'sqlite3'
+  gem 'byebug'
 end
 
 group :doc do
