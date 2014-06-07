@@ -1,1 +1,21 @@
-<%= @songs %>
+<div class="row-fluid">
+  <div class="span3">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Add</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @songs.each do |song| %>
+          <tr>
+            <td><%= song.title %></td>
+            <td><%= link_to "Requeue", songs_path(:song => {:youtube_id => song.youtube_id}), :method => :post %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>
