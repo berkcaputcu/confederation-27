@@ -14,19 +14,19 @@ class SongsController < ApplicationController
   end
 
   def next
-    Pusher.url = "http://#{ENV['PUSHER_KEY']}:#{ENV['PUSHER_SECRET']}@api.pusherapp.com/apps/#{ENV['PUSHER_ID']}"
-    Pusher['songs'].trigger('next', {})
+    trigger_pusher('next')
     redirect_to search_songs_path
   end
 
   def create
     @song = Song.create_with(title: song_params["title"]).find_or_create_by(youtube_id: song_params["youtube_id"])
     @song.reset
+    trigger_pusher('new')
     redirect_to search_songs_path
   end
 
   def play
-    @current = Song.all.select(&:queued?).first
+    @current = Song.where(state: 'queued').order('updated_at DESC').last
     @current.play unless @current.nil?
   end
 
@@ -51,5 +51,10 @@ class SongsController < ApplicationController
 
   def song_params
     params.require(:song).permit(:youtube_id, :title)
+  end
+
+  def trigger_pusher(action)
+    Pusher.url = "http://#{ENV['PUSHER_KEY']}:#{ENV['PUSHER_SECRET']}@api.pusherapp.com/apps/#{ENV['PUSHER_ID']}"
+    Pusher['songs'].trigger(action, {})
   end
 end

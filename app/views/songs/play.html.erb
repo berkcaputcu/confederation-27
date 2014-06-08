@@ -38,21 +38,20 @@
           location.reload();
         }
     }
-
-    function reloadNoSongs() {
-      setTimeout(function(){
-         location.reload();
-      }, 5000);
-    }
-
 </script>
 
 
 <% if @current.nil? %>
+  <% content_for :head do %>
+    <script type="text/javascript">
+      var pusher = new Pusher("<%= ENV['PUSHER_KEY'] %>");
+      var channel = pusher.subscribe('songs');
+      channel.bind('new', function(data) {
+        location.reload();
+      });
+    </script>
+  <% end %>
   No queued songs
-  <script>
-    $( document ).ready( reloadNoSongs() )
-  </script>
 <% else %>
   <div id="player"></div>
 <% end %>
