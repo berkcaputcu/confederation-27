@@ -4,11 +4,11 @@
       <thead>
         <tr>
           <th></th>
-          <th>Song Title</th>
+          <th>Most Played</th>
         </tr>
       </thead>
       <tbody>
-        <% @songs.each do |song| %>
+        <% @fav_songs.each do |song| %>
           <tr>
             <td><%= link_to "<i class='icon-plus'></i>".html_safe, songs_path(:song => {:youtube_id => song.youtube_id}), :method => :post, :class => "btn" %></td>
             <td><span title="<%= song.times_played %> times played"><%= song.title %></span></td>
@@ -16,6 +16,21 @@
         <% end %>
       </tbody>
     </table>
-
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Last Played</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @song_history.each do |song| %>
+          <tr>
+            <td><%= link_to "<i class='icon-plus'></i>".html_safe, songs_path(:song => {:youtube_id => song.youtube_id}), :method => :post, :class => "btn" %></td>
+            <td><span title="<%= song.times_played %> times played"><%= song.title %></span></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
