@@ -7,7 +7,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'state_machine'
-gem 'yourub', '~> 1.0.5', github: 'berkcaputcu/yourub'
+gem 'yourub', :git => 'git://github.com/edap/yourub.git', ref: "ba8435e33457a6c2d861dae8144e215df0579fd7"
 gem 'haml'
 gem "therubyracer"
 gem "less-rails"
