@@ -41,6 +41,10 @@ class SongsController < ApplicationController
     end
   end
 
+  def redirect_to_jukapp
+    redirect_to "http://www.jukapp.io/rooms/4/join"
+  end
+
   private
   def set_song
     @song = Song.find(params[:id])
